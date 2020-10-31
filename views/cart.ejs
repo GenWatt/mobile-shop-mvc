@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="cart-section">
+      <article>
+        <ul class="cart-container">
+          <%if(products.length){%> <%products.map(product=>{%>
+          <li class="cart-item" data-id="<%=product._id%>">
+            <header class="cart-header">
+              <img src="./<%=product.img%>" alt="<%=product.phone%>" class="cart-img" />
+              <h1><%=product.phone%></h1>
+              <button class="action-btn delete-btn"><i class="fas fa-times"></i></button>
+            </header>
+            <p class="cart-description"><%=product.description%></p>
+            <div class="quantity-wrapper">
+              <span class="quantity"><%=product.quantity%></span>
+              <button class="action-btn increment" value="increment">+</button>
+              <button class="action-btn decrement" value="decrement">-</button>
+            </div>
+            <div class="cart-details">
+              <span class="cart-brand"><%=product.brand%></span>
+              <button class="primary-btn buy-now-btn">Buy now</button>
+              <span class="cart-price"><%=product.price*product.quantity%>zł</span>
+            </div>
+          </li>
+          <% })%>
+        </ul>
+        <div class="cart-total">
+          <p class="item-count"></p>
+          <button class="buy-all-btn">Buy All</button>
+          <span class="total-price"><%=totalPrice%></span><span class="total-price">zł</span>
+        </div>
+      </article>
+      <%}else{%>
+      <p class="cart-empty">Cart is empty!</p>
+    </section>
+
+    <%}%> <%- include("./partials/footer.ejs") %> <%- include("./partials/theme.ejs") %> <%-
+    include("./partials/renderQuantity.ejs") %>
+    <script type="module" src="js/components/cartApi.js"></script>
+    <script src="https://kit.fontawesome.com/61630affa7.js" crossorigin="anonymous"></script>
+  </body>
+</html>

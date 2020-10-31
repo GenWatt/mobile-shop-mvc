@@ -1,0 +1,22 @@
+<script type="module">
+  import { ADD_TO_CART_BTN } from "/js/DOMElements.js";
+
+  document.querySelectorAll(ADD_TO_CART_BTN).forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      await fetch("/cart", {
+        method: "POST",
+        body: JSON.stringify({ productId: e.target.dataset.id }),
+        headers: { "Content-Type": "application/json" },
+      });
+      location.reload();
+    });
+  });
+
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const id = e.target.closest(".order-item").dataset.id;
+      await fetch(`/products/${id}`, { method: "DELETE" });
+      location.reload();
+    });
+  });
+</script>

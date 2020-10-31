@@ -1,0 +1,14 @@
+<script>
+  const products = JSON.parse(`<%-JSON.stringify(products)%>`);
+  let productsCount = 0;
+
+  if (products.length) {
+    products.map((product) => {
+      productsCount += product.quantity;
+      document.querySelector(`.cart-item[data-id="${product._id}"]`).querySelector(".decrement").disabled =
+        product.quantity === 1 ? true : false;
+    });
+
+    document.querySelector(".item-count").innerText = `In cart is ${productsCount} item(s)`;
+  }
+</script>

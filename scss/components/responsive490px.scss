@@ -1,0 +1,35 @@
+@media screen and (max-width: 490px) {
+  .search-container {
+    &:hover {
+      transform: scale(1.05);
+      -webkit-transform: scale(1.05);
+      -moz-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      -o-transform: scale(1.05);
+    }
+
+    .nav {
+      min-height: 50vh;
+    }
+
+    .search-label {
+      font-size: $font-small;
+    }
+
+    .search-input {
+      width: 250px;
+    }
+  }
+
+  .cart-brand {
+    padding-right: 15px;
+  }
+
+  .cart-price {
+    padding-left: 15px;
+  }
+
+  .add-product {
+    right: 5px;
+  }
+}

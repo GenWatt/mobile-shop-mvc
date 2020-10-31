@@ -1,0 +1,142 @@
+.drop-down-menu {
+  color: rgba(0, 0, 0, 0.651);
+  cursor: pointer;
+  width: 200px;
+  position: relative;
+
+  & i {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    transition: transform 0.4s ease-in;
+    -webkit-transition: transform 0.4s ease-in;
+    -moz-transition: transform 0.4s ease-in;
+    -ms-transition: transform 0.4s ease-in;
+    -o-transition: transform 0.4s ease-in;
+  }
+
+  & p {
+    transition: border-radius 0.3s ease;
+    -webkit-transition: border-radius 0.3s ease;
+    -moz-transition: border-radius 0.3s ease;
+    -ms-transition: border-radius 0.3s ease;
+    -o-transition: border-radius 0.3s ease;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+  }
+
+  &.show p {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  &.show i {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+  }
+
+  //change theme board
+  .change-theme {
+    width: 100%;
+    padding: 0;
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -ms-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    transform-origin: top;
+
+    // circle with color
+    .choose {
+      @include center-flex(space-between);
+      position: relative;
+      width: 100%;
+      height: 30px;
+      padding: 5px;
+      transition: transform 0.2s ease, background-color 1s ease, color 0.4s ease-out;
+      -webkit-transition: transform 0.2s ease, background-color 1s ease, color 0.4s ease-out;
+      -moz-transition: transform 0.2s ease, background-color 1s ease, color 0.4s ease-out;
+      -ms-transition: transform 0.2s ease, background-color 1s ease, color 0.4s ease-out;
+      -o-transition: transform 0.2s ease, background-color 1s ease, color 0.4s ease-out;
+      color: rgba(0, 0, 0, 0.719);
+      background-color: white;
+      border-bottom: 1px rgba(0, 0, 0, 0.473) solid;
+      overflow: hidden;
+      z-index: 1;
+
+      &:hover {
+        color: white;
+      }
+
+      &:last-child {
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+
+      //circle with current color to choose
+      .color {
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        position: relative;
+        z-index: -1;
+        float: right;
+        background-color: var(--primary-color);
+        transition: transform 0.3s ease;
+        -webkit-transition: transform 0.3s ease;
+        -moz-transition: transform 0.3s ease;
+        -ms-transition: transform 0.3s ease;
+        -o-transition: transform 0.3s ease;
+
+        &.lightgreen {
+          background-color: lightgreen;
+        }
+
+        &.red {
+          background-color: red;
+        }
+
+        &.black {
+          background-color: black;
+        }
+      }
+
+      &:hover .color {
+        transform: scaleX(24) scaleY(3);
+        -webkit-transform: scaleX(24) scaleY(3);
+        -moz-transform: scaleX(24) scaleY(3);
+        -ms-transform: scaleX(24) scaleY(3);
+        -o-transform: scaleX(24) scaleY(3);
+      }
+    }
+  }
+
+  &.show .change-theme {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+  }
+}

@@ -1,0 +1,18 @@
+@mixin center-flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin pos-top {
+  position: absolute;
+  top: 50%;
+}
+
+@mixin btn {
+  outline: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--font-color);
+  border: none;
+}

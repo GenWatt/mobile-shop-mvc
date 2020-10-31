@@ -1,0 +1,67 @@
+.primary-btn {
+  grid-column: 1/3;
+  align-self: flex-end;
+  box-shadow: var(--box-shadow);
+}
+
+.secondary-btn {
+  background-color: var(--secondary-color);
+  box-shadow: var(--secondary-box-shadow);
+  text-decoration: none;
+  @include center-flex;
+  align-self: flex-end;
+}
+
+.action-btn {
+  @include btn;
+  box-shadow: var(--box-shadow);
+  padding: 3px;
+  margin-left: 5px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.buy-now-btn {
+  justify-self: center;
+  grid-column: 1/4;
+  width: 50%;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.edit-btn {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  margin-left: 0px;
+}
+
+.buy-all-btn {
+  @include btn;
+  padding: 3px;
+  background-color: var(--secondary-color);
+  color: var(--font-color);
+  width: 80px;
+  border-radius: 5px;
+  height: 30px;
+  margin-right: 10px;
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus {
+    box-shadow: var(--box-shadow);
+  }
+}

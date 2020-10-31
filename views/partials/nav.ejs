@@ -1,0 +1,72 @@
+<nav class="nav">
+  <div class="nav-container">
+    <%if(products){%>
+    <div class="search-container">
+      <div class="search-input">
+        <label for="search" class="search-label">Search</label>
+        <div class="icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <input type="text" name="search" id="search" autocomplete="off" />
+      </div>
+      <div class="items-list-box">
+        <div id="path">
+          <span id="scroll"></span>
+        </div>
+        <ul class="list">
+          <%products.map((product)=>{%>
+          <a role="button" class="item" href="products/<%=product._id%>">
+            <li data-id="<%=product._id%>">
+              <%=product.phone%>
+              <span class="brand"> <%=product.brand%> </span>
+            </li>
+          </a>
+          <%})%>
+        </ul>
+      </div>
+    </div>
+    <div class="filters-container">
+      <div class="set-up">
+        <label for="brand">Filter by brand</label>
+        <input type="radio" class="filter" name="filter" id="brand" value="brand" checked />
+      </div>
+      <div class="set-up">
+        <label for="phone">Filter by phone</label>
+        <input type="radio" class="filter" name="filter" id="phone" value="phone" />
+      </div>
+    </div>
+    <%}%>
+    <div class="drop-down-menu">
+      <p>Change Theme</p>
+      <i class="fas fa-arrow-down"></i>
+      <ul class="change-theme">
+        <li class="choose" data-theme="lightgreen">
+          Lightgreen Theme
+          <span class="color lightgreen"></span>
+        </li>
+        <li class="choose" data-theme="red">
+          Red Theme
+          <span class="color red"></span>
+        </li>
+        <li class="choose" data-theme="black">
+          Black Theme
+          <span class="color black"></span>
+        </li>
+      </ul>
+    </div>
+    <button class="mobile-dropdown-nav">
+      <i class="fas fa-arrow-down"></i>
+    </button>
+    <div class="user-options">
+      <span class="username"><%=login%> </span>
+      <a class="hint cart" href="/cart"
+        ><i class="fas fa-shopping-cart">
+          <%if(count){%>
+          <span class="cart-quantity"><%=count%></span>
+          <%}%></i
+        >
+      </a>
+      <a class="hint" role="button" id="logout" href="user/logout">Log out</a>
+    </div>
+  </div>
+</nav>

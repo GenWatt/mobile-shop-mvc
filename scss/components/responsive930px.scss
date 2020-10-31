@@ -1,0 +1,100 @@
+@media screen and (max-width: 930px) {
+  body {
+    .nav {
+      height: 300px;
+
+      .drop-down-menu {
+        width: 300px;
+      }
+
+      .nav-container {
+        @include center-flex(space-around);
+        flex-direction: column-reverse;
+        height: 350px;
+        position: relative;
+
+        &.fixed-nav {
+          animation: 0;
+          -webkit-animation: 0;
+          top: -300px;
+        }
+
+        .search-container {
+          margin-left: 0;
+        }
+
+        .filters-container {
+          left: 0;
+        }
+
+        &.fixed-nav .mobile-dropdown-nav {
+          opacity: 1;
+          transform: scale(1) translateY(-50%);
+          -webkit-transform: scale(1) translateY(-50%);
+          -moz-transform: scale(1) translateY(-50%);
+          -ms-transform: scale(1) translateY(-50%);
+          -o-transform: scale(1) translateY(-50%);
+        }
+
+        &.fixed-nav.show {
+          top: 0;
+        }
+      }
+
+      .mobile-dropdown-nav {
+        width: 40px;
+        height: 30px;
+        position: absolute;
+        @include center-flex();
+        color: white;
+        bottom: -35px;
+        transform: scale(0);
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        opacity: 0;
+        background-color: var(--primary-color);
+        -webkit-transform: scale(0);
+        -moz-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        cursor: pointer;
+        outline: none;
+        border: none;
+
+        &.change-arrow-direction i {
+          transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+          -moz-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
+          -o-transform: rotate(180deg);
+        }
+
+        i {
+          transition: transform 0.7s ease-in;
+          -webkit-transition: transform 0.7s ease-in;
+          -moz-transition: transform 0.7s ease-in;
+          -ms-transition: transform 0.7s ease-in;
+        }
+      }
+    }
+
+    .user-options {
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 100%;
+      align-items: center;
+
+      .cart {
+        margin: 0 10px;
+
+        .cart-quantity {
+          left: -5px;
+        }
+      }
+    }
+
+    .form {
+      margin-top: 30px;
+    }
+  }
+}

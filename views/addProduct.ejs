@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Products</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <section class="wrapper">
+      <form
+        action="<%if(product){%>/products/update/<%=product._id%><%}else{%>/products/add<%}%>%>%>"
+        method="POST"
+        class="form"
+        enctype="multipart/form-data"
+      >
+        <%-messages("partials/message",locals)%>
+        <div class="box">
+          <label for="product-name">Product name:</label>
+          <input
+            type="text"
+            class="form-input"
+            id="product-name"
+            name="phone"
+            value="<%if(product){%><%=product.phone%><%}%>%>"
+            required
+          />
+        </div>
+        <div class="box">
+          <label for="description">Description:</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-input"
+            style="height: auto"
+            rows="10"
+            required
+          >
+<%if(product){%><%=product.description%><%}%>%></textarea
+          >
+        </div>
+        <div class="box">
+          <label for="brand">Brand:</label>
+          <input
+            type="text"
+            class="form-input"
+            name="brand"
+            id="brand"
+            value="<%if(product){%><%=product.brand%><%}%>%>"
+            required
+          />
+        </div>
+        <div class="box" id="img-box">
+          <label for="image">Image:</label>
+          <input type="file" id="image" name="img" class="form-input" accept=".jpg, .jpeg, .png, .webp" />
+        </div>
+        <div class="box">
+          <label for="price">Price[zł]:</label>
+          <input
+            type="number"
+            id="price"
+            name="price"
+            class="form-input"
+            value="<%if(product){%><%=product.price%><%}%>%>"
+            required
+          />
+        </div>
+        <div class="box row">
+          <h4>Storage</h4>
+          <input type="radio" name="storage" class="form-input-radio" checked value="64GB" />
+          <input type="radio" name="storage" class="form-input-radio" value="128GB" />
+          <input type="radio" name="storage" class="form-input-radio" value="256GB" />
+          <input type="radio" name="storage" class="form-input-radio" value="512GB" />
+        </div>
+        <div class="box row">
+          <h4>RAM</h4>
+          <input type="radio" name="ram" class="form-input-radio" checked value="2GB" />
+          <input type="radio" name="ram" class="form-input-radio" value="4GB" />
+          <input type="radio" name="ram" class="form-input-radio" value="6GB" />
+          <input type="radio" name="ram" class="form-input-radio" value="8GB" />
+          <input type="radio" name="ram" class="form-input-radio" value="12GB" />
+        </div>
+        <div class="box">
+          <label for="processor">Processor:</label>
+          <input
+            type="text"
+            id="processor"
+            name="processor"
+            class="form-input"
+            value="<%if(product){%><%=product.specification.processor%><%}%>%>"
+            required
+          />
+        </div>
+        <div class="box">
+          <button type="submit" class="primary-btn" id="update-btn" style="width: 250px; margin-top: 10px">
+            <%if(product){%>Update <%}else{%>Create <%}%>%>%>Product
+          </button>
+        </div>
+      </form>
+    </section>
+    <%- include("./partials/footer.ejs") %> <%- include("./partials/theme.ejs") %>
+    <%-include("./partials/fileReader.ejs")%>
+  </body>
+</html>

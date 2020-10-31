@@ -1,0 +1,7 @@
+<%Object.keys(messages).forEach((type)=>{%>
+<ul class="<%=type%>">
+  <%messages[type].forEach((message)=>{%>
+  <li><%=message%></li>
+  <%})%>
+</ul>
+<%})%>

@@ -1,0 +1,82 @@
+<%- include("./nav.ejs",products,login,count) %>
+<section class="order-items-section">
+  <%if(products){%>
+  <ul class="order-container">
+    <%products.map((product)=>{%>
+    <li class="order-item" data-id="<%=product._id%>">
+      <%if(admin){%>
+      <button class="action-btn delete-btn"><i class="fas fa-times"></i></button>
+      <a href="products/update/<%=product._id%>">
+        <button class="action-btn edit-btn"><i class="fas fa-pen"></i></button>
+      </a>
+      <%}%>
+      <h4><%=product.phone%></h4>
+      <div class="product-image">
+        <img alt="<%=product.phone%>" src="/<%=product.img%>" />
+      </div>
+      <p><%=product.description%></p>
+      <span class="brand-order"><%=product.brand%></span>
+      <span class="price"><%=product.price%>zł</span>
+      <button class="primary-btn add-to-cart" data-id="<%=product._id%>">Add To Cart</button>
+      <a role="button" href="/products/<%=product._id%>" class="secondary-btn" data-id="<%=product._id%>">
+        Details
+      </a>
+    </li>
+    <%})%>
+  </ul>
+  <%}%>
+</section>
+<aside class="sort" id="sort-aside">
+  <div class="sort-container">
+    <i class="fas fa-chevron-left"></i>
+    <label for="from-lowest">From lowest to highest</label>
+    <div class="input-set">
+      <div class="icon-set">
+        <i class="fas fa-piggy-bank"></i>
+        <i class="fas fa-long-arrow-alt-right"></i>
+        <i class="fas fa-coins"></i>
+      </div>
+      <input
+        type="radio"
+        id="from-lowest"
+        name="sort-input"
+        class="sort-input"
+        value="FROM_LOWEST"
+        data-sort-by="price"
+      />
+    </div>
+    <label for="from-highest">From highest to lowest</label>
+    <div class="input-set">
+      <div class="icon-set">
+        <i class="fas fa-coins"></i>
+        <i class="fas fa-long-arrow-alt-right"></i>
+        <i class="fas fa-piggy-bank"></i>
+      </div>
+      <input
+        type="radio"
+        id="from-highest"
+        name="sort-input"
+        class="sort-input"
+        value="FROM_HIGHEST"
+        data-sort-by="price"
+      />
+    </div>
+    <label for="from-highest">Default</label>
+    <div class="input-set">
+      <div class="icon-set">
+        <i class="fas fa-users-cog"></i>
+        <i class="fas fa-long-arrow-alt-right"></i>
+        <i class="fas fa-cog"></i>
+      </div>
+      <input type="radio" id="default" name="sort-input" class="sort-input" value="id" checked />
+    </div>
+  </div>
+</aside>
+<%- include("./footer.ejs") %> <%- include("./productBtn.ejs") %>
+<script type="module">
+  import { state } from "./js/state.js";
+  const products = JSON.parse(`<%- JSON.stringify(products) %>`);
+  state.products = products;
+</script>
+<script type="module" src="js/index.js"></script>
+<script src="https://kit.fontawesome.com/61630affa7.js" crossorigin="anonymous"></script>

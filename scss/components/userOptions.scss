@@ -1,0 +1,48 @@
+.user-options {
+  display: flex;
+  flex-direction: column;
+  min-width: 62px;
+  color: var(--font-color);
+
+  .cart {
+    font-size: $font-medium + 0.2em;
+    position: relative;
+
+    i {
+      position: relative;
+    }
+
+    .cart-quantity {
+      @include center-flex;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      font-size: $font-small - 0.45em;
+    }
+  }
+
+  .option {
+    font-size: $font-small;
+    background-color: transparent;
+    border: none;
+    opacity: 0.8;
+    text-decoration: underline var(--font-color);
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .username {
+    padding: 5px 0 5px 0;
+    font-size: $font-medium;
+    text-align: center;
+  }
+}

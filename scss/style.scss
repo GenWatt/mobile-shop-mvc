@@ -1,0 +1,70 @@
+@import "./mixins.scss";
+@import "./variables.scss";
+@import "./components/searchList.scss";
+@import "./components/listScroll.scss";
+@import "./components/searchInput.scss";
+@import "./components/user.scss";
+@import "./components/loader.scss";
+@import "./components/filters.scss";
+@import "./components/themesChanger.scss";
+@import "./components/userOptions.scss";
+@import "./components/sort.scss";
+@import "./components/order.scss";
+@import "./components/footer.scss";
+@import "./components/errorMsg.scss";
+@import "./components/form.scss";
+@import "./components/nav-filter.scss";
+@import "./components/cart.scss";
+@import "./components/error.scss";
+@import "./components/product.scss";
+@import "./components/btns.scss";
+@import "./components/responsive930px.scss";
+@import "./components/responsive490px.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:focus {
+  outline: none;
+}
+
+html {
+  --primary-color: rgb(252, 104, 104);
+  --secondary-color: rgb(231, 27, 27);
+  --font-color: rgb(231, 225, 225);
+  --brand-name-color: rgb(22, 22, 22);
+  --box-shadow: 3px 3px 10px rgb(255, 0, 0), -3px -3px 10px rgba(0, 0, 0, 0.185);
+  --secondary-box-shadow: 3px 3px 10px rgb(196, 0, 0), -3px -3px 10px rgba(0, 0, 0, 0.185);
+}
+
+html[data-theme="black"] {
+  --primary-color: rgb(39, 37, 37);
+  --secondary-color: rgb(8, 8, 8);
+  --box-shadow: 3px 3px 10px rgb(0, 0, 0), -3px -3px 10px rgba(0, 0, 0, 0.377);
+  --font-color: rgb(255, 254, 254);
+  --brand-name-color: rgba(73, 71, 71, 0.904);
+  --secondary-box-shadow: 3px 3px 10px rgb(8, 8, 8), -3px -3px 10px rgba(0, 0, 0, 0.185);
+}
+
+html[data-theme="lightgreen"] {
+  --primary-color: rgb(147, 182, 19);
+  --secondary-color: rgb(98, 124, 5);
+  --box-shadow: 3px 3px 10px rgb(154, 197, 0), -3px -3px 10px rgba(0, 0, 0, 0.185);
+  --font-color: rgb(231, 225, 225);
+  --brand-name-color: rgb(44, 43, 43);
+  --secondary-box-shadow: 3px 3px 10px rgb(98, 124, 5), -3px -3px 10px rgba(0, 0, 0, 0.185);
+}
+
+body {
+  padding: 0;
+  background-color: rgba(46, 43, 43, 0.849);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+
+  .mobile-dropdown-nav {
+    display: none;
+  }
+}

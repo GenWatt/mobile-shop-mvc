@@ -1,0 +1,13 @@
+.user {
+  position: absolute;
+  bottom: -30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -10px;
+  background-color: var(--primary-color);
+  color: var(--font-color);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}

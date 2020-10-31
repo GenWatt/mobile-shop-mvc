@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <section class="wrapper">
+      <form class="form" method="POST" action="login">
+        <h1>LOGIN</h1>
+        <%-messages("partials/message",locals)%>
+        <div class="box">
+          <label for="login">Login:</label>
+          <input type="text" id="login" class="form-input" name="login" placeholder="Login" />
+        </div>
+        <div class="box">
+          <label for="login">Password:</label>
+          <input type="password" id="password" class="form-input" name="password" placeholder="Password" />
+        </div>
+        <button class="form-btn" id="login-btn">Login</button>
+        <a href="register" class="hint">Dont't have account? Let's register!</a>
+      </form>
+    </section>
+  </body>
+  <%- include("./partials/footer.ejs") %> <%- include("./partials/theme.ejs") %>
+</html>

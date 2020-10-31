@@ -1,0 +1,149 @@
+/*sort order items list  */
+.sort {
+  position: fixed;
+  right: -182px;
+  top: 20%;
+  transition: right 0.4s cubic-bezier(1, 0, 0, 1);
+  -webkit-transition: right 0.4s cubic-bezier(1, 0, 0, 1);
+  -moz-transition: right 0.4s cubic-bezier(1, 0, 0, 1);
+  -ms-transition: right 0.4s cubic-bezier(1, 0, 0, 1);
+  -o-transition: right 0.4s cubic-bezier(1, 0, 0, 1);
+  z-index: 10000;
+
+  &.active {
+    right: 0;
+  }
+
+  .sort-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: white;
+    padding: 10px;
+    position: relative;
+
+    .fa-chevron-left {
+      @include center-flex();
+      @include pos-top();
+      left: -20px;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      width: 25px;
+      height: 25px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.4s ease-out;
+      -webkit-transition: transform 0.4s ease-out;
+      -moz-transition: transform 0.4s ease-out;
+      -ms-transition: transform 0.4s ease-out;
+      -o-transition: transform 0.4s ease-out;
+
+      &:hover {
+        transform: scale(1.1) translateY(-50%);
+        -webkit-transform: scale(1.1) translateY(-50%);
+        -moz-transform: scale(1.1) translateY(-50%);
+        -ms-transform: scale(1.1) translateY(-50%);
+        -o-transform: scale(1.1) translateY(-50%);
+      }
+
+      &.active {
+        transform: rotate(180deg) translateY(40%);
+        -webkit-transform: rotate(180deg) translateY(40%);
+        -moz-transform: rotate(180deg) translateY(40%);
+        -ms-transform: rotate(180deg) translateY(40%);
+        -o-transform: rotate(180deg) translateY(40%);
+      }
+    }
+
+    label {
+      margin-bottom: 10px;
+    }
+
+    .input-set {
+      @include center-flex(space-between);
+      font-size: $font-medium;
+      margin-bottom: 10px;
+
+      .sort-input {
+        margin-bottom: 10px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::before {
+          content: "";
+          width: 20px;
+          height: 20px;
+          background-color: rgb(124, 120, 120);
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          position: absolute;
+          right: 5px;
+          cursor: pointer;
+          transition-property: transform, background-color, border, box-shadow;
+          transition-duration: 2s;
+          transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        &:hover::before {
+          transform: scale(0.8);
+          -webkit-transform: scale(0.8);
+          -moz-transform: scale(0.8);
+          -ms-transform: scale(0.8);
+          -o-transform: scale(0.8);
+        }
+
+        &:checked::before {
+          transform: scale(1.1);
+          -webkit-transform: scale(1.1);
+          -moz-transform: scale(1.1);
+          -ms-transform: scale(1.1);
+          -o-transform: scale(1.1);
+          background-color: rgb(83, 77, 77);
+          border: 1px solid rgba(255, 255, 255, 0.705);
+          box-shadow: 0 0 10px 1px white;
+        }
+      }
+
+      .icon-set {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        place-items: center;
+        transition: color 0.5s ease-out;
+        -webkit-transition: color 0.5s ease-out;
+        -moz-transition: color 0.5s ease-out;
+        -ms-transition: color 0.5s ease-out;
+        -o-transition: color 0.5s ease-out;
+
+        &.active-set {
+          color: rgb(165, 99, 0);
+        }
+      }
+    }
+  }
+}
+
+.sort-container {
+  background-color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+}
+
+.sort-container .fa-chevron-left {
+  background-color: var(--primary-color);
+  box-shadow: var(--box-shadow);
+}

@@ -1,0 +1,17 @@
+#path {
+  width: 5px;
+  height: 100%;
+  background-color: rgba(3, 3, 3, 0.288);
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  border-bottom-right-radius: 10px;
+
+  #scroll {
+    display: block;
+    width: 5px;
+    background-color: rgba(0, 0, 0, 0.541);
+    border-bottom-right-radius: 10px;
+  }
+}

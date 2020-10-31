@@ -1,0 +1,45 @@
+<script>
+  class ProductsMethods {
+    constructor() {
+      this.product = JSON.parse(`<%-JSON.stringify(product)%>`);
+
+      if (this.product) this.showImg("/" + this.product.img);
+    }
+
+    readFile(e) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+
+      reader.addEventListener("load", (event) => this.showImg(event.target.result));
+      reader.readAsDataURL(file);
+    }
+
+    showImg(path) {
+      if (document.querySelector(".img-pre-view")) document.querySelector(".img-pre-view").remove();
+
+      const img = document.createElement("img");
+      img.classList.add("img-pre-view");
+      img.src = path;
+
+      document.querySelector("#img-box").appendChild(img);
+    }
+
+    chackedValue() {
+      if (!this.product) return;
+      const inputsName = ["storage", "ram"];
+
+      inputsName.forEach((name) => {
+        const inputs = document.querySelectorAll(`.form-input-radio[name="${name}"]`);
+
+        inputs.forEach((input) => {
+          if (input.value === this.product.specification[name]) input.checked = true;
+        });
+      });
+    }
+  }
+
+  document.querySelector("#image").addEventListener("change", (e) => new ProductsMethods().readFile(e));
+
+  new ProductsMethods().chackedValue();
+</script>

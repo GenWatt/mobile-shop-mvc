@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=product.phone%></title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main class="product-wrapper">
+      <header class="product-header">
+        <img class="product-img" src="/<%=product.img%>" alt="<%=product.phone%>" />
+        <h2 class="product-title"><%=product.phone%></h2>
+      </header>
+      <section class="product-info">
+        <p><%=product.description%></p>
+        <button class="primary-btn add-to-cart" data-id="<%=product._id%>">Add To Cart</button>
+        <button class="secondary-btn">Buy Now</button>
+      </section>
+      <%-messages("partials/message",locals)%>
+      <section class="product-parameters">
+        <table>
+          <tr>
+            <th>Storage</th>
+            <td><%=product.specification.storage%></td>
+          </tr>
+          <tr>
+            <th>RAM</th>
+            <td><%=product.specification.ram%></td>
+          </tr>
+          <tr>
+            <th>Processor</th>
+            <td><%=product.specification.processor%></td>
+          </tr>
+        </table>
+      </section>
+    </main>
+    <%- include("./partials/footer.ejs") %><%- include("./partials/theme.ejs") %>
+    <%-include("./partials/productBtn.ejs")%>
+  </body>
+</html>
