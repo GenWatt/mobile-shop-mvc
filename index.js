@@ -47,6 +47,7 @@ app.use((req, res, next) => {
   res.locals.messages = require("express-messages")(req, res);
   next();
 });
+app.get("/", (req, res) => res.redirect("products"));
 app.use("/products", router);
 app.use("/user", userRouter);
 app.use("/cart", cartRouter);
@@ -58,6 +59,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(err);
   if (err.error === "wrong extension") {
     req.flash("error", err.message);
     res.redirect("back");
