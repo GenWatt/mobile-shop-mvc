@@ -89,12 +89,12 @@ module.exports.product_admin_update_post = async (req, res, next) => {
 
   try {
     const prevProduct = await Product.findOne({ _id: req.params.id });
-    const product = await Product.findOneAndUpdate({ _id: req.params.id }, newProduct);
+    await Product.findOneAndUpdate({ _id: req.params.id }, newProduct);
     if (img)
       fs.unlinkSync("C:/Users/adria/OneDrive/Pulpit/Praca/wyszukiwarka/backend/public/" + prevProduct.img);
 
     req.flash("success", "Product Updated!");
-    res.render("addProduct", { product });
+    res.redirect("/products");
   } catch (error) {
     next(error);
   }
