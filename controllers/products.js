@@ -88,13 +88,13 @@ module.exports.product_admin_update_post = async (req, res, next) => {
   if (img) newProduct.img = img;
 
   try {
+    const prevProduct = await Product.findOne({ _id: req.params.id });
     const product = await Product.findOneAndUpdate({ _id: req.params.id }, newProduct);
     if (img)
-      fs.unlinkSync("C:/Users/adria/Desktop/praca/wyszukiwarka/backend/controllers/../public/" + product.img);
-    const updatedProduct = await Product.findOne({ _id: req.params.id });
+      fs.unlinkSync("C:/Users/adria/OneDrive/Pulpit/Praca/wyszukiwarka/backend/public/" + prevProduct.img);
 
     req.flash("success", "Product Updated!");
-    res.render("addProduct", { product: updatedProduct });
+    res.render("addProduct", { product });
   } catch (error) {
     next(error);
   }
@@ -105,7 +105,7 @@ module.exports.product_admin_delete = async (req, res, next) => {
     const { id } = req.params;
     const product = await Product.findOne({ _id: id });
 
-    fs.unlinkSync("C:/Users/adria/Desktop/praca/wyszukiwarka/backend/controllers/../public/" + product.img);
+    fs.unlinkSync("C:/Users/adria/OneDrive/Pulpit/Praca/wyszukiwarka/backend/public/" + product.img);
     await Product.deleteOne({ _id: id });
     await Cart.deleteMany({ productId: id });
     req.flash("success", "Product deleted");
