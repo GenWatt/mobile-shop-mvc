@@ -89,12 +89,6 @@ module.exports.product_admin_update_post = async (req, res, next) => {
     };
     console.log(img, product.img);
     await Product.updateOne({ _id: req.params.id }, newProduct);
-    if (img && typeof product.img === "string")
-      setTimeout(
-        () =>
-          fs.unlinkSync("C:/Users/adria/OneDrive/Pulpit/Praca/wyszukiwarka/backend/public/" + product.img),
-        100
-      );
 
     req.flash("success", "Product Updated!");
     res.redirect("back");
