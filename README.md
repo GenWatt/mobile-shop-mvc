@@ -9,7 +9,7 @@ Apliaction uses MVC pattern.
   <li>Clone repository</li>
   <li>Run this comand in the terminal <code>npm install</code>to install all dependecis</li> 
   <li>To run development server use <code>npm run dev</code>. </li> 
-  <li>Open browser, server shuld run on localhost:3000</li>
+  <li>Open browser, server should run on localhost:3000</li>
 </ul>
 
 <h1>Technology</h1>
