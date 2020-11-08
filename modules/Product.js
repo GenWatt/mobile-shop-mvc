@@ -6,7 +6,7 @@ const productsSchema = new Schema({
   brand: { type: String, required: true },
   phone: { type: String, required: true },
   description: { type: String, required: true },
-  img: { type: String, required: true },
+  img: { type: String, required: true, default: null },
   price: { type: Number, required: true },
   quantity: Number,
   specification: {

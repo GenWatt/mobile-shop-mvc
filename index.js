@@ -5,7 +5,6 @@ const cartRouter = require("./routes/cart");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -24,7 +23,6 @@ const db = mongoose.connect(process.env.MONGO_URI, {
 const app = express();
 
 app.use(nocache());
-app.use(cors());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
@@ -61,7 +59,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   if (err.error === "wrong extension") {
     req.flash("error", err.message);
-    res.redirect("back");
+    res.json("back");
   }
   const status = res.status(err.status || 500);
 
@@ -69,4 +67,4 @@ app.use((err, req, res, next) => {
 
   res.render("error", { error: err });
 });
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);

@@ -33,15 +33,13 @@ module.exports.product_get = async (req, res, next) => {
   }
 };
 
-module.exports.product_admin_add_get = async (req, res, next) => {
-  res.render("addProduct", { product: null });
-};
+module.exports.product_admin_add_get = async (req, res, next) => res.render("addProduct", { product: null });
 
 module.exports.product_admin_get = async (req, res, next) => {
   try {
     const product = await Product.findOne({ _id: req.params.id });
 
-    if (product) res.render("addProduct", { product });
+    res.render("addProduct", { product });
   } catch (error) {
     next(error);
   }
@@ -74,21 +72,29 @@ module.exports.product_admin_add_post = async (req, res, next) => {
 
 module.exports.product_admin_update_post = async (req, res, next) => {
   const { phone, description, brand, img, price, storage, ram, processor } = req.body;
-  const newProduct = {
-    phone,
-    description,
-    brand,
-    price,
-    specification: {
-      storage,
-      ram,
-      processor,
-    },
-  };
-  if (img) newProduct.img = img;
 
   try {
-    await Product.findOneAndUpdate({ _id: req.params.id }, newProduct);
+    const product = await Product.findOne({ _id: req.params.id });
+    const newProduct = {
+      phone,
+      description,
+      brand,
+      price,
+      img: img || product.img,
+      specification: {
+        storage,
+        ram,
+        processor,
+      },
+    };
+    console.log(img, product.img);
+    await Product.updateOne({ _id: req.params.id }, newProduct);
+    if (img && typeof product.img === "string")
+      setTimeout(
+        () =>
+          fs.unlinkSync("C:/Users/adria/OneDrive/Pulpit/Praca/wyszukiwarka/backend/public/" + product.img),
+        100
+      );
 
     req.flash("success", "Product Updated!");
     res.redirect("back");
